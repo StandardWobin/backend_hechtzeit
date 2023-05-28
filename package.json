@@ -1,0 +1,27 @@
+{
+  "name": "hechtzeit_backend_prototype",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Live Interaction Tool Prototype (BACKEND)",
+  "author": " StandardWobin",
+  "type": "module",
+  "scripts": {
+    "dbcreate": "node src/dataBase/admin_tools/db_create_schema.js && node src/dataBase/admin_tools/db_create_tables.js",
+    "dev": "node index.js dev",
+    "build": "node index.js production",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.9.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.6.0",
+    "socket.io": "^4.6.1",
+    "uuid": "^9.0.0",
+    "vitest": "^0.25.8"
+  }
+}
