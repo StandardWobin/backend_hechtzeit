@@ -1,4 +1,4 @@
-# Hechtzeit Backend
+# Hechtzeit - Prototype for interactive live digital theatre
 
 Hechtzeit is a tool for live events, especially theatre performances. It provides dynamic interactions for a live stream. This is the backend.
 
