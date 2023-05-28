@@ -3,7 +3,7 @@
 Hechtzeit is a tool for live events, especially theatre performances. It provides dynamic interactions for a live stream. This is the backend.
 
 ## Installation
-1. rename the folder "hidden_example" to "hidden
+1. rename the folder "hidden_example" to "hidden"
 2. change database configuration in hidden/db/db.config.js 
 3. add SSL certificates to hidden folder
 4. set up database
