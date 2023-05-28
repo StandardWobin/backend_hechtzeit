@@ -6,13 +6,14 @@ Hechtzeit is a tool for live events, especially theatre performances. It provide
 1. rename the folder "hidden_example" to "hidden"
 2. change database configuration in hidden/db/db.config.js 
 3. add SSL certificates to hidden folder
-4. set up database
-```
-npm run dbcreate
-```
-5. install dependencies
+4. install dependencies
 ```
 npm install
+```
+
+5. set up database
+```
+npm run dbcreate
 ```
 
 6. serve
