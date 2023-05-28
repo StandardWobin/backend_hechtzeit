@@ -1,24 +1,7 @@
 
 
-const joints = "  LEFT JOIN " + dbConfig.DB + ".scene_content_mc\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_mc.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_pusher\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_pusher.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_slider\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_slider.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_painter\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_painter.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_noop\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_noop.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_voicer\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_voicer.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_texter\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_texter.global_scene_id\
-                  LEFT JOIN " + dbConfig.DB + ".scene_content_imageup\
-                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_imageup.global_scene_id\
-                  "
 
- module.exports =  {
+module.exports =  {
   insert_new: function (connection, dbConfig, logger, data, callback) {
     // delete old token in database after user login in
     var sql = 'INSERT INTO ' + dbConfig.DB + '.scene (scene.show, owner, created, scene.order) VALUES ("' + data.link + '", \
@@ -277,6 +260,25 @@ const joints = "  LEFT JOIN " + dbConfig.DB + ".scene_content_mc\
    */
   get_all: function (connection, dbConfig, logger, link, token, callback) {
     // TODO: defend from sql injection... UNSAGE
+
+    const joints = "  LEFT JOIN " + dbConfig.DB + ".scene_content_mc\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_mc.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_pusher\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_pusher.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_slider\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_slider.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_painter\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_painter.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_noop\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_noop.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_voicer\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_voicer.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_texter\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_texter.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_imageup\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_imageup.global_scene_id\
+                  "
+
     var sql = 'SELECT * FROM ' + dbConfig.DB + '.scene\
         ' + joints + '\
         WHERE scene.show="' + link + '" AND owner=(SELECT ID from ' + dbConfig.DB + '.user WHERE ID=(SELECT owner FROM ' + dbConfig.DB + '.tokens where tokenvalue="' + token + '")) ORDER BY scene.order ;';
@@ -300,6 +302,26 @@ const joints = "  LEFT JOIN " + dbConfig.DB + ".scene_content_mc\
                 ' + joints + '\
                 WHERE scene.show="' + link + '" AND ' + dbConfig.DB + '.scene.ID=' + id + ';';
     logger.debug("DB - scene - get_by_link_and_id", sql);
+
+
+    const joints = "  LEFT JOIN " + dbConfig.DB + ".scene_content_mc\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_mc.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_pusher\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_pusher.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_slider\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_slider.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_painter\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_painter.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_noop\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_noop.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_voicer\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_voicer.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_texter\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_texter.global_scene_id\
+                  LEFT JOIN " + dbConfig.DB + ".scene_content_imageup\
+                  ON " + dbConfig.DB + ".scene.ID = " + dbConfig.DB + ".scene_content_imageup.global_scene_id\
+                  "
+
     return connection.query(
       sql,
       function (err, rows) {
