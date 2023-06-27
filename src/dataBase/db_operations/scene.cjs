@@ -8,7 +8,7 @@ module.exports =  {
                   (SELECT ID from ' + dbConfig.DB + '.user WHERE ID=\
                       (SELECT owner FROM ' + dbConfig.DB + '.tokens where tokenvalue="' + data.token + '")),\
                       now(),\
-                  ' + '(select IFNULL(MAX(temp.order)+1, 0) from (select * from " + dbConfig.DB + ".scene where scene.show="' + data.link + '"' + ') as temp));\
+                  ' + '(select IFNULL(MAX(temp.order)+1, 0) from (select * from ' + dbConfig.DB + '.scene where scene.show="' + data.link + '"' + ') as temp));\
                 SELECT * FROM ' + dbConfig.DB + '.scene WHERE ID = LAST_INSERT_ID();';
 
     logger.debug("DB - SCENE - insert_new", sql);
